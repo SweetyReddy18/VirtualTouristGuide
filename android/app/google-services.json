@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "501391533020",
+    "firebase_url": "https://virtualtg1.firebaseio.com",
+    "project_id": "virtualtg1",
+    "storage_bucket": "virtualtg1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:501391533020:android:2b1f9e32ad1d6b45ba2519",
+        "android_client_info": {
+          "package_name": "com.harika.vtg1flutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "501391533020-b2t3uaqfh3k58i83japdcd7reeuiasg3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTsy0QXkdXkkTPkbdfL4l6uz2--1rXkyM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "501391533020-b2t3uaqfh3k58i83japdcd7reeuiasg3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
