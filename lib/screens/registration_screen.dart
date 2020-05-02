@@ -3,7 +3,7 @@ import 'package:vtg1flutter/constants.dart';
 import 'package:vtg1flutter/components/rounded_button.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:vtg1flutter/screens/welcome_to_map_screen.dart';
+import 'package:vtg1flutter/screens/welcome_screen.dart';
 
 class RegistrationScreen extends StatefulWidget {
   static const String id = 'registration_screen';
@@ -43,7 +43,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               SizedBox(
                 height: 48.0,
               ),
-              TextField(
+              TextFormField(
                 keyboardType: TextInputType.emailAddress,
                 textAlign: TextAlign.center,
                 style: TextStyle(
@@ -51,7 +51,12 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   fontWeight: FontWeight.bold,
                 ),
                 onChanged: (value) {
-                  email = value;
+                  if (value != null) {
+                    email = value;
+                  }
+                  else {
+                    print('Enter a value for email.');
+                  }
                 },
                 decoration: kTextFieldDecoration.copyWith(
                   hintText: 'Enter your email',
@@ -60,7 +65,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               SizedBox(
                 height: 8.0,
               ),
-              TextField(
+              TextFormField(
                 obscureText: true,
                 textAlign: TextAlign.center,
                 style: TextStyle(
@@ -68,7 +73,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   fontWeight: FontWeight.bold,
                 ),
                 onChanged: (value) {
-                  password = value;
+                  if (value != null) password = value;
                 },
                 decoration: kTextFieldDecoration.copyWith(
                   hintText: 'Enter your password',
@@ -97,13 +102,20 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                       password: password,
                     );
                     if (newUser != null) {
-                      Navigator.pushNamed(context, WelcomeToMapScreen.id);
+                      Navigator.pushNamed(context, WelcomeScreen.id);
                     }
                     setState(() {
                       showSpinner = false;
                     });
-                  } catch (e) {
+                  }
+//                 catch(signUpError){
+//                    if(signUpError.code == 'ERROR_EMAIL_ALREADY_IN_USE'){
+//                      print('Vokay error came!');
+//                    }
+//                  }
+                  catch (e) {
                     print(e);
+
                   }
                 },
               )

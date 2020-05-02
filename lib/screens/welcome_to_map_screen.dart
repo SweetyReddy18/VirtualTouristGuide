@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:vtg1flutter/components/rounded_button.dart';
+
+import 'package:vtg1flutter/screens/map_screen1.dart';
 import 'package:vtg1flutter/screens/weather_screen.dart';
-import 'package:vtg1flutter/services/location.dart';
-import 'package:vtg1flutter/services/networking.dart';
+import 'package:vtg1flutter/services/weather.dart';
+
+import 'package:vtg1flutter/screens/map_screen2.dart';
 
 const apiKey = 'd413160d418036107043c25088ff10cc';
 
@@ -25,20 +28,18 @@ class _WelcomeToMapScreenState extends State<WelcomeToMapScreen> {
   void initState() {
     super.initState();
     getCurrentUser();
-    getLocationData();
   }
 
-  var weatherData;
+  //var weatherData;
 
-  void getLocationData() async {
-    Location location = Location();
-    await location.getCurrentLocation();
-    latitude = location.latitude;
-    longitude = location.longitude;
-    NetworkHelper networkHelper = NetworkHelper(
-        'https://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&appid=$apiKey');
-    weatherData = await networkHelper.getData();
-  }
+//    Location location = Location();
+//    await location.getCurrentLocation();
+//    latitude = location.latitude;
+//    longitude = location.longitude;
+//    NetworkHelper networkHelper = NetworkHelper(
+//        'https://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&appid=$apiKey');
+//    weatherData = await networkHelper.getData();
+  //}
 
   void getCurrentUser() async {
     try {
@@ -50,6 +51,18 @@ class _WelcomeToMapScreenState extends State<WelcomeToMapScreen> {
     } catch (e) {
       print(e);
     }
+  }
+
+  void getLocationData() async {
+    var weatherData = await WeatherModel().getLocationWeather();
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) {
+        return WeatherScreen(
+          locationWeather: weatherData,
+        );
+      }),
+    );
   }
 
   @override
@@ -66,14 +79,7 @@ class _WelcomeToMapScreenState extends State<WelcomeToMapScreen> {
               title: 'Weather',
               colour: Colors.blueAccent,
               onPressed: () {
-                Navigator.push(
-                  context,
-                  new MaterialPageRoute(
-                    builder: (context) => new WeatherScreen(
-                      locationWeather: weatherData,
-                    ),
-                  ),
-                );
+                getLocationData();
               },
             ),
             Text(
@@ -92,7 +98,12 @@ class _WelcomeToMapScreenState extends State<WelcomeToMapScreen> {
               title: 'Explore',
               colour: Colors.blueAccent,
               onPressed: () {
-                //Navigator.pushNamed(context, RegistrationScreen.id);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) {
+                    return HomePage();
+                  }),
+                );
               },
             ),
             Text(

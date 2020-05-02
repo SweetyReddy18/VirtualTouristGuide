@@ -30,7 +30,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
         temperature = 0;
         weatherIcon = ':(';
         weatherMessage =
-            'Click on the location icon to get weather in your location.';
+            '  '; // Click on the location icon to get weather in your location.
         cityName = '';
         return;
       }
@@ -78,27 +78,6 @@ class _WeatherScreenState extends State<WeatherScreen> {
                       color: Colors.white70,
                     ),
                   ),
-//                  FlatButton(
-//                    onPressed: () async {
-//                      var typedName = await Navigator.push(
-//                        context,
-//                        MaterialPageRoute(
-//                          builder: (context) {
-//                            return CityScreen();
-//                          },
-//                        ),
-//                      );
-//                      if(typedName != null){
-//                        var weatherData = await weather.getCityWeather(typedName);
-//                        updateUI(weatherData);
-//                      }
-//                    },
-//                    child: Icon(
-//                      Icons.location_city,
-//                      size: 50.0,
-//                      color: Colors.white70,
-//                    ),
-//                  ),
                 ],
               ),
               Padding(
