@@ -4,6 +4,7 @@ import 'package:vtg1flutter/components/rounded_button.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:vtg1flutter/screens/welcome_screen.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 class RegistrationScreen extends StatefulWidget {
   static const String id = 'registration_screen';
@@ -53,8 +54,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 onChanged: (value) {
                   if (value != null) {
                     email = value;
-                  }
-                  else {
+                  } else {
                     print('Enter a value for email.');
                   }
                 },
@@ -86,13 +86,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 title: 'Register',
                 colour: Colors.blueAccent,
                 onPressed: () async {
-//                  try {
-//                    final newUser = await _auth.createUserWithEmailAndPassword(
-//                        email: email, password: password);
-//                  }
-//                  catch(e){
-//                    print(e);
-//                  }
                   setState(() {
                     showSpinner = true;
                   });
@@ -108,14 +101,24 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                       showSpinner = false;
                     });
                   }
-//                 catch(signUpError){
-//                    if(signUpError.code == 'ERROR_EMAIL_ALREADY_IN_USE'){
-//                      print('Vokay error came!');
-//                    }
-//                  }
                   catch (e) {
+                    Alert(
+                      context: context,
+                      type: AlertType.error,
+                      title: "Registration Error!",
+                      desc: "Login if already regitered.",
+                      buttons: [
+                        DialogButton(
+                          child: Text(
+                            "COOL",
+                            style: TextStyle(color: Colors.white, fontSize: 20),
+                          ),
+                          onPressed: () => Navigator.pushNamed(context, WelcomeScreen.id),
+                          width: 120,
+                        )
+                      ],
+                    ).show();
                     print(e);
-
                   }
                 },
               )

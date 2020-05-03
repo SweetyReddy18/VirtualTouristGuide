@@ -3,7 +3,9 @@ import 'package:vtg1flutter/constants.dart';
 import 'package:vtg1flutter/components/rounded_button.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:vtg1flutter/screens/registration_screen.dart';
 import 'package:vtg1flutter/screens/welcome_to_map_screen.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 class LoginScreen extends StatefulWidget {
   static const String id = 'login_screen';
@@ -95,6 +97,47 @@ class _LoginScreenState extends State<LoginScreen> {
                       showSpinner = false;
                     });
                   } catch (e) {
+//                      Alert(
+//                        context: context,
+//                        type: AlertType.error,
+//                        title: "Login Error!",
+//                        desc: "incorrect E-mail or password",
+//                        buttons: [
+//                          DialogButton(
+//                            child: Text(
+//                              "COOL",
+//                              style:
+//                                  TextStyle(color: Colors.white, fontSize: 20),
+//                            ),
+//                            onPressed: () => Navigator.pop(context),
+//                            width: 120,
+//                          )
+//                        ],
+//                      ).show();
+                    Alert(
+                      context: context,
+                      type: AlertType.warning,
+                      title: "Login Error!",
+                      desc: "Check e-mail and password, if not a user already, register!",
+                      buttons: [
+                        DialogButton(
+                          child: Text(
+                            "Login",
+                            style: TextStyle(color: Colors.white, fontSize: 20),
+                          ),
+                          onPressed: () => Navigator.pushNamed(context, LoginScreen.id),
+                          color: Colors.lightBlueAccent,
+                        ),
+                        DialogButton(
+                          child: Text(
+                            "Register",
+                            style: TextStyle(color: Colors.white, fontSize: 20),
+                          ),
+                          onPressed: () => Navigator.pushNamed(context, RegistrationScreen.id),
+                          color: Colors.blue,
+                        )
+                      ],
+                    ).show();
                     print(e);
                   }
                 },

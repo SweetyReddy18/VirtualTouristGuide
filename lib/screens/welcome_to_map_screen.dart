@@ -101,7 +101,7 @@ class _WelcomeToMapScreenState extends State<WelcomeToMapScreen> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) {
-                    return HomePage();
+                    return MapScreen1();
                   }),
                 );
               },
