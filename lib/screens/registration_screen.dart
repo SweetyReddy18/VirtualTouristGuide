@@ -106,7 +106,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                       context: context,
                       type: AlertType.error,
                       title: "Registration Error!",
-                      desc: "Login if already regitered.",
+                      desc: "Login if already registered.",
                       buttons: [
                         DialogButton(
                           child: Text(

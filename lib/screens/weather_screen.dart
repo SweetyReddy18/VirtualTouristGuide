@@ -48,16 +48,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
     return Scaffold(
       backgroundColor: Colors.black,
       body: Container(
-//        decoration: BoxDecoration(
-//          image: DecorationImage(
-//            image: AssetImage('images/location_background.jpg'),
-//            fit: BoxFit.cover,
-//            colorFilter: ColorFilter.mode(
-//              Colors.white.withOpacity(0.8),
-//              BlendMode.dstATop,
-//            ),
-//          ),
-//        ),
+
         constraints: BoxConstraints.expand(),
         child: SafeArea(
           child: Column(

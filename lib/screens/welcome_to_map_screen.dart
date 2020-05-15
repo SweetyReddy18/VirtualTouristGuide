@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:vtg1flutter/components/rounded_button.dart';
+import 'package:vtg1flutter/screens/how_long_screen.dart';
 
 import 'package:vtg1flutter/screens/map_screen1.dart';
+import 'package:vtg1flutter/screens/notify_sr_ss_screen.dart';
 import 'package:vtg1flutter/screens/weather_screen.dart';
 import 'package:vtg1flutter/services/weather.dart';
 
-import 'package:vtg1flutter/screens/map_screen2.dart';
 
 const apiKey = 'd413160d418036107043c25088ff10cc';
 
@@ -29,17 +30,6 @@ class _WelcomeToMapScreenState extends State<WelcomeToMapScreen> {
     super.initState();
     getCurrentUser();
   }
-
-  //var weatherData;
-
-//    Location location = Location();
-//    await location.getCurrentLocation();
-//    latitude = location.latitude;
-//    longitude = location.longitude;
-//    NetworkHelper networkHelper = NetworkHelper(
-//        'https://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&appid=$apiKey');
-//    weatherData = await networkHelper.getData();
-  //}
 
   void getCurrentUser() async {
     try {
@@ -102,6 +92,7 @@ class _WelcomeToMapScreenState extends State<WelcomeToMapScreen> {
                   context,
                   MaterialPageRoute(builder: (context) {
                     return MapScreen1();
+                    //return TrySunriseTime();
                   }),
                 );
               },
@@ -118,23 +109,23 @@ class _WelcomeToMapScreenState extends State<WelcomeToMapScreen> {
             SizedBox(
               height: 20.0,
             ),
-            RoundedButton(
-              title: 'Know More',
-              colour: Colors.blueAccent,
-              onPressed: () {
-                //Navigator.pushNamed(context, RegistrationScreen.id);
-              },
-            ),
-            Text(
-              'Click the picture, and voila, you will know what it is all about.',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Colors.lightBlueAccent,
-                fontSize: 15.0,
-                //fontFamily: 'AmaticSC',
-                fontWeight: FontWeight.w400,
-              ),
-            ),
+//            RoundedButton(
+//              title: 'Know More',
+//              colour: Colors.blueAccent,
+//              onPressed: () {
+//                //Navigator.pushNamed(context, RegistrationScreen.id);
+//              },
+//            ),
+//            Text(
+//              'Click the picture, and voila, you will know what it is all about.',
+//              textAlign: TextAlign.center,
+//              style: TextStyle(
+//                color: Colors.lightBlueAccent,
+//                fontSize: 15.0,
+//                //fontFamily: 'AmaticSC',
+//                fontWeight: FontWeight.w400,
+//              ),
+//            ),
             SizedBox(
               height: 20.0,
             ),
@@ -142,7 +133,12 @@ class _WelcomeToMapScreenState extends State<WelcomeToMapScreen> {
               title: 'When should you visit?',
               colour: Colors.blueAccent,
               onPressed: () {
-                //Navigator.pushNamed(context, RegistrationScreen.id);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) {
+                    return SrSsTime();
+                  }),
+                );
               },
             ),
             Text(
@@ -162,7 +158,13 @@ class _WelcomeToMapScreenState extends State<WelcomeToMapScreen> {
               title: 'How Long?',
               colour: Colors.blueAccent,
               onPressed: () {
-                //Navigator.pushNamed(context, LoginScreen.id);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) {
+                    //return SearchTry1();
+                    return SearchBarWidget();
+                  }),
+                );
               },
             ),
             Text(
