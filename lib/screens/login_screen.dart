@@ -97,23 +97,6 @@ class _LoginScreenState extends State<LoginScreen> {
                       showSpinner = false;
                     });
                   } catch (e) {
-//                      Alert(
-//                        context: context,
-//                        type: AlertType.error,
-//                        title: "Login Error!",
-//                        desc: "incorrect E-mail or password",
-//                        buttons: [
-//                          DialogButton(
-//                            child: Text(
-//                              "COOL",
-//                              style:
-//                                  TextStyle(color: Colors.white, fontSize: 20),
-//                            ),
-//                            onPressed: () => Navigator.pop(context),
-//                            width: 120,
-//                          )
-//                        ],
-//                      ).show();
                     Alert(
                       context: context,
                       type: AlertType.warning,

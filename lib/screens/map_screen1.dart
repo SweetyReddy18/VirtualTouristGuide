@@ -124,11 +124,8 @@ class MapScreen1State extends State<MapScreen1> {
             SizedBox(width: 10.0),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: _boxes(
-                  "https://static.toiimg.com/photo/38130176.cms",
-                  17.3604,
-                  78.4736,
-                  "Mecca Masjid"),
+              child: _boxes("https://static.toiimg.com/photo/38130176.cms",
+                  17.3604, 78.4736, "Mecca Masjid"),
             ),
             SizedBox(width: 10.0),
             Padding(

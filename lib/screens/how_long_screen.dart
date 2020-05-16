@@ -1,19 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-//import 'package:english_words/english_words.dart' as words;
-
-//void main() => runApp(MyApp());
 
 class SearchBarWidget extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'SeachAppBarRecipe',
       color: Colors.white,
-//      theme: ThemeData(
-//        primarySwatch: Colors.green,
-//      ),
       home: SearchAppBarRecipe(title: 'SeachAppBarRecipe'),
     );
   }
@@ -32,7 +25,6 @@ class _SearchAppBarRecipeState extends State<SearchAppBarRecipe> {
   final List<String> kWords;
   _SearchAppBarDelegate _searchDelegate;
 
-  //Initializing with sorted list of english words
   _SearchAppBarRecipeState()
       : kWords = [
           'CharMinar',
@@ -53,7 +45,6 @@ class _SearchAppBarRecipeState extends State<SearchAppBarRecipe> {
   @override
   void initState() {
     super.initState();
-    //Initializing search delegate with sorted list of English words
     _searchDelegate = _SearchAppBarDelegate(kWords);
   }
 
@@ -71,7 +62,6 @@ class _SearchAppBarRecipeState extends State<SearchAppBarRecipe> {
           ),
         ),
         actions: <Widget>[
-          //Adding the search widget in AppBar
           IconButton(
             tooltip: 'Search',
             color: Colors.black,
@@ -84,7 +74,6 @@ class _SearchAppBarRecipeState extends State<SearchAppBarRecipe> {
         ],
       ),
       body: Scrollbar(
-        //Displaying all English words in list in app's main page
         child: ListView.builder(
           itemCount: kWords.length,
           itemBuilder: (context, idx) => ListTile(
@@ -115,7 +104,6 @@ class _SearchAppBarRecipeState extends State<SearchAppBarRecipe> {
     );
   }
 
-  //Shows Search result
   void showSearchPage(
       BuildContext context, _SearchAppBarDelegate searchDelegate) async {
     final String selected = await showSearch<String>(
@@ -155,8 +143,6 @@ class _SearchAppBarDelegate extends SearchDelegate<String> {
         ],
         super();
 
-  // Setting leading icon for the search bar.
-  //Clicking on back arrow will take control to main page
   @override
   Widget buildLeading(BuildContext context) {
     return IconButton(
@@ -172,7 +158,6 @@ class _SearchAppBarDelegate extends SearchDelegate<String> {
     );
   }
 
-  // Builds page to populate search results.
   String timeTakenToVisit(String q) {
     if (q == 'CharMinar') return '1 hour is ';
     if (q == 'BirlaMandir')
@@ -215,8 +200,10 @@ class _SearchAppBarDelegate extends SearchDelegate<String> {
               ),
               Text(
                 '$timeTaken taken to Visit',
+                textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontSize: 30,
+                  fontSize: 30.0,
+                  fontFamily: 'Inconsolata',
                   color: Colors.black,
                 ),
               ),
@@ -227,7 +214,11 @@ class _SearchAppBarDelegate extends SearchDelegate<String> {
                 },
                 child: Text(
                   this.query,
-                  style: TextStyle(fontSize: 30),
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 40.0,
+                    fontFamily: 'Inconsolata',
+                  ),
                 ),
               ),
             ],
@@ -237,7 +228,6 @@ class _SearchAppBarDelegate extends SearchDelegate<String> {
     );
   }
 
-  // Suggestions list while typing search query - this.query.
   @override
   Widget buildSuggestions(BuildContext context) {
     final Iterable<String> suggestions = this.query.isEmpty
@@ -256,7 +246,6 @@ class _SearchAppBarDelegate extends SearchDelegate<String> {
     );
   }
 
-  // Action buttons at the right of search bar.
   @override
   List<Widget> buildActions(BuildContext context) {
     return <Widget>[
@@ -280,7 +269,6 @@ class _SearchAppBarDelegate extends SearchDelegate<String> {
   }
 }
 
-// Suggestions list widget displayed in the search page.
 class _WordSuggestionList extends StatelessWidget {
   const _WordSuggestionList({this.suggestions, this.query, this.onSelected});
 
@@ -297,17 +285,14 @@ class _WordSuggestionList extends StatelessWidget {
         final String suggestion = suggestions[i];
         return ListTile(
           leading: query.isEmpty ? Icon(Icons.history) : Icon(null),
-          // Highlight the substring that matched the query.
           title: RichText(
             text: TextSpan(
               text: suggestion.substring(0, query.length),
-
               style: textTheme.copyWith(fontWeight: FontWeight.bold),
-              //TextStyle(color: Colors.lightBlueAccent),
               children: <TextSpan>[
                 TextSpan(
                   text: suggestion.substring(query.length),
-                  style: textTheme, //TextStyle(color: Colors.lightBlueAccent),
+                  style: textTheme,
                 ),
               ],
             ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:vtg1flutter/components/rounded_button.dart';
+import 'package:vtg1flutter/screens/exploreScreen.dart';
 import 'package:vtg1flutter/screens/how_long_screen.dart';
 
 import 'package:vtg1flutter/screens/map_screen1.dart';
@@ -92,13 +93,12 @@ class _WelcomeToMapScreenState extends State<WelcomeToMapScreen> {
                   context,
                   MaterialPageRoute(builder: (context) {
                     return MapScreen1();
-                    //return TrySunriseTime();
                   }),
                 );
               },
             ),
             Text(
-              'You can know about the near by tourist attractions (landmarks and monuments), if any.',
+              'You can know about the nearby tourist attractions (landmarks and monuments), if any.',
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Colors.lightBlueAccent,
@@ -109,23 +109,28 @@ class _WelcomeToMapScreenState extends State<WelcomeToMapScreen> {
             SizedBox(
               height: 20.0,
             ),
-//            RoundedButton(
-//              title: 'Know More',
-//              colour: Colors.blueAccent,
-//              onPressed: () {
-//                //Navigator.pushNamed(context, RegistrationScreen.id);
-//              },
-//            ),
-//            Text(
-//              'Click the picture, and voila, you will know what it is all about.',
-//              textAlign: TextAlign.center,
-//              style: TextStyle(
-//                color: Colors.lightBlueAccent,
-//                fontSize: 15.0,
-//                //fontFamily: 'AmaticSC',
-//                fontWeight: FontWeight.w400,
-//              ),
-//            ),
+            RoundedButton(
+              title: 'Know More',
+              colour: Colors.blueAccent,
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) {
+                    return ExploreScreen();
+                  }),
+                );
+              },
+            ),
+            Text(
+              'Search a place and you will know what it is all about.',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.lightBlueAccent,
+                fontSize: 15.0,
+                //fontFamily: 'AmaticSC',
+                fontWeight: FontWeight.w400,
+              ),
+            ),
             SizedBox(
               height: 20.0,
             ),

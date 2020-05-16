@@ -13,7 +13,7 @@ class SrSsTime extends StatelessWidget {
       else if (splittedDate[0].toString() == '18')
         return "It's a nice time to see a sunset.";
       else
-        return 'The time is just $formattedDate';
+        return "The time is just $formattedDate\n You won't find any sunrise or sunsent now :)";
     }
 
     return Scaffold(
@@ -56,7 +56,7 @@ class SrSsTime extends StatelessWidget {
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Colors.lightBlueAccent,
-                  fontSize: 50.0,
+                  fontSize: 40.0,
                   fontFamily: 'Inconsolata',
                 ),
               ),
