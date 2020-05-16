@@ -35,7 +35,6 @@ class _SearchAppBarRecipeState extends State<ExploreScreen> {
   @override
   void initState() {
     super.initState();
-    //Initializing search delegate with sorted list of English words
     _searchDelegate = _SearchAppBarDelegate(kWords);
   }
 
