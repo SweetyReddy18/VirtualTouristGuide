@@ -1,6 +1,6 @@
 # vtg1flutter
 
-A new Flutter application.
+Flutter application on location based tourist guide for outdoor environment.
 
 ## Getting Started
 
